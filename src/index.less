@@ -1,0 +1,136 @@
+@width: 800px;
+@height: 400px;
+html,
+body {
+  background-color: #000;
+}
+
+#root {
+  width: @width;
+  height: @height;
+  border: 1px solid #fff;
+  position: relative;
+}
+
+.common {
+  width: @width / 20;
+  height: @height / 10;
+  position: absolute;
+}
+
+.yellow-tank {
+  background-image: url(./images/tankAll.gif);
+  background-size: 630px 300px;
+  background-position-x: -1px;
+}
+
+.left{
+  transform: rotateZ(-90deg)
+}
+.right{
+  transform: rotateZ(90deg)
+}
+.down{
+  transform: rotateZ(180deg)
+}
+.up{
+  transform: rotateZ(0deg)
+}
+
+
+.green-tank{
+  background-image: url(./images/tankAll.gif);
+  background-size: 630px 300px;
+  background-position-x: -169px;
+}
+
+.explode-tank{
+  background-image: url(./images/tankAll.gif);
+  background-size: 630px 300px;
+  background-position-x: -421px;
+  animation: explode 1s infinite steps(1,start);
+}
+
+@keyframes explode{
+  0%{
+    background-position-x: -421px;
+  }
+  33%{
+    background-position-x: -421px;
+  }
+  66%{
+    background-position-x: -464px;
+  }
+  100%{
+    background-position-x: -505px;
+  }
+}
+
+.home{
+  background-image: url(./images/tankAll.gif);
+  background-size: 630px 300px;
+  background-position-x: -337px;
+}
+
+.die{
+  background-image: url(./images/tankAll.gif);
+  background-size: 630px 300px;
+  background-position-x: -379px;
+}
+
+.enemy-common,.enemy-fast,.enemy-boss-g,.enemy-boss-w,.enemy-boss-y{
+  background-image: url(./images/tankAll.gif);
+  background-size: 630px 300px;
+  background-position-x: -1px;
+  background-position-y: -37px;
+}
+
+.enemy-fast{
+  background-position-x: -169px;
+}
+
+.enemy-boss-y{
+  background-position-y: -74px;
+  background-position-x: -169px;
+}
+.enemy-boss-g{
+  background-position-y: -74px;
+  background-position-x: -1px;
+}
+.enemy-boss-w{
+  background-position-y: -74px;
+  background-position-x: -337px;
+}
+
+.appear{
+  background-image: url(./images/tankAll.gif);
+  background-size: 630px 300px;
+  animation: explode 1s infinite steps(1,start);
+  background-position-y: -37px;
+}
+@keyframes appear{
+  0%{
+    background-position-x: -337px;
+  }
+  12.5%{
+    background-position-x: -337px;
+  }
+  25%{
+    background-position-x: -379px;
+  }
+  37.5%{
+    background-position-x: -421px;
+  }
+  50%{
+    background-position-x: -464px;
+  }
+  62.5%{
+    background-position-x: -505px;
+  }
+  75%{
+    background-position-x: -547px;
+  }
+  87.5%{
+    background-position-x: -589px;
+  }
+}
