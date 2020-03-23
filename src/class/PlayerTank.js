@@ -1,5 +1,4 @@
 import Tank from "../core/Tank";
-import Operation from "../core/Operation";
 
 class PlayerTank extends Tank {
   constructor(type = "1") {
@@ -12,8 +11,27 @@ class PlayerTank extends Tank {
       PlayerTank.PlayerLife
     );
     this.playerInfo = player;
-    this.Operation = new Operation(this.render, this.left, this.top);
+    this.addKeyBoard();
   }
+
+  addKeyBoard() {
+    const HASH = {
+      left: { left: -1, top: 0 },
+      right: { left: +1, top: 0 },
+      up: { left: 0, top: -1 },
+      down: { left: 0, top: +1 }
+    };
+    document.addEventListener(
+      "keypress",
+      e => {
+        const direction = this.playerInfo.keyboard[e.key];
+        this.render.changeDirection(direction)
+        this.move(this.playerInfo.DOMoptions,direction);
+      },
+      false
+    );
+  }
+
 }
 
 PlayerTank.PlayerLife = 10; // 10条命
@@ -24,12 +42,24 @@ PlayerTank.PlayerType = {
   1: {
     DOMoptions: "yellow-tank",
     initLeft: "300",
-    initTop: "360"
+    initTop: "360",
+    keyboard: {
+      a: "left",
+      s: "down",
+      w: "up",
+      d: "right"
+    }
   },
   2: {
     DOMoptions: "green-tank",
     initLeft: "400",
-    initTop: "360"
+    initTop: "360",
+    keyboard: {
+      a: "left",
+      s: "down",
+      w: "up",
+      d: "right"
+    }
   }
 };
 

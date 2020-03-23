@@ -4,7 +4,7 @@
 
 const wrapper = document.getElementById("root");
 class Render {
-  constructor(options, documentType = "div") {
+  constructor(options, direction = "up", documentType = "div") {
     const DOM = document.createElement(documentType);
     DOM.classList.add("common");
     this.renderType = options;
@@ -12,16 +12,31 @@ class Render {
       DOM.classList.add(this.renderType);
     }
     this.DOM = DOM;
+    this.direction = direction;
     Render.Wrapper.append(this.DOM);
   }
 
-  render(left, top, options) {
+  render(left, top, options, direction) {
+    const DIR = {
+      left: "rotateZ(-90deg)",
+      right: "rotateZ(90deg)",
+      up: "rotateZ(0deg)",
+      down: "rotateZ(180deg)"
+    };
+
     this.DOM.style.left = left + "px";
     this.DOM.style.top = top + "px";
     if (options !== this.renderType && options) {
       this.DOM.classList.replace(this.renderType, options);
       this.renderType = options;
     }
+
+    this.DOM.style.transform = DIR[this.direction];
+  }
+
+  changeDirection(direction) {
+    this.DOM.style.transform = direction;
+    this.direction = direction;
   }
 
   remove() {
