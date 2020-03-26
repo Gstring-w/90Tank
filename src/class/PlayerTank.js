@@ -50,6 +50,7 @@ PlayerTank.PlayerType = {
       d: "right"
     }
   },
+  // TODO: player2的按键需要调整
   2: {
     DOMoptions: "green-tank",
     initLeft: "400",
